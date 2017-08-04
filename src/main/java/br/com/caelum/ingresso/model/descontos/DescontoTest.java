@@ -1,3 +1,4 @@
+package br.com.caelum.ingresso.model.descontos;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalTime;
@@ -9,9 +10,6 @@ import br.com.caelum.ingresso.model.Filme;
 import br.com.caelum.ingresso.model.Ingresso;
 import br.com.caelum.ingresso.model.Sala;
 import br.com.caelum.ingresso.model.Sessao;
-import br.com.caelum.ingresso.model.descontos.DescontoDeTrintaPorCentoParaBancos;
-import br.com.caelum.ingresso.model.descontos.DescontoEstudante;
-import br.com.caelum.ingresso.model.descontos.SemDesconto;
 
 public class DescontoTest {
 
@@ -48,7 +46,7 @@ public class DescontoTest {
 
 		ingresso = new Ingresso(sessao, new SemDesconto());
 
-		bd = new BigDecimal("32.50");
+		bd = new BigDecimal("32.5");
 
 		Assert.assertEquals(bd, ingresso.getPreco());
 
