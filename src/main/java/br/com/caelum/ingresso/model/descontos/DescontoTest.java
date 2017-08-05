@@ -8,8 +8,10 @@ import org.junit.Test;
 
 import br.com.caelum.ingresso.model.Filme;
 import br.com.caelum.ingresso.model.Ingresso;
+import br.com.caelum.ingresso.model.Lugar;
 import br.com.caelum.ingresso.model.Sala;
 import br.com.caelum.ingresso.model.Sessao;
+import br.com.caelum.ingresso.model.TipoDeIngresso;
 
 public class DescontoTest {
 
@@ -21,9 +23,9 @@ public class DescontoTest {
 
 	@Test
 	public void DeveConcederDescontoDe30PorCentoParaIngressosDeClientesDeBancos() {
-
-		ingresso = new Ingresso(sessao, new DescontoDeTrintaPorCentoParaBancos());
-
+		Lugar lugar = new Lugar("A", 1);
+		ingresso = new Ingresso(sessao, TipoDeIngresso.BANCO, lugar);
+		
 		bd = new BigDecimal("22.75");
 
 		Assert.assertEquals(bd, ingresso.getPreco());
@@ -32,8 +34,8 @@ public class DescontoTest {
 	
 	@Test
 	public void DeveConcederDescontoDe50PorCentoParaIngressosDeEstudante() {
-
-		ingresso = new Ingresso(sessao, new DescontoEstudante());
+		Lugar lugar = new Lugar("A", 1);
+		ingresso = new Ingresso(sessao, TipoDeIngresso.ESTUDANTE, lugar);
 
 		bd = new BigDecimal("16.25");
 
@@ -43,8 +45,8 @@ public class DescontoTest {
 	
 	@Test
 	public void naoDeveConcederDescontoParaIngressoNormal() {
-
-		ingresso = new Ingresso(sessao, new SemDesconto());
+		Lugar lugar = new Lugar("A", 1);
+		ingresso = new Ingresso(sessao, TipoDeIngresso.INTEIRO, lugar);
 
 		bd = new BigDecimal("32.5");
 
